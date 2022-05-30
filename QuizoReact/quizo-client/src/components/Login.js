@@ -1,8 +1,9 @@
-import { Button, Card, CardContent, TextField, Typography } from '@mui/material'
+import { Button, Card, CardContent, TextField, Typography, CardActionArea } from '@mui/material'
 import { Box, width } from '@mui/system'
 import React, { useState } from 'react'
 import Center from './Center'
 import useForm from '../hooks/useForm'
+import CardMedia from '@mui/material/CardMedia';
 
 const getFreshModelObject = () => ({
     name: '',
@@ -36,37 +37,44 @@ export default function Login() {
         <Center>
             <Card sx={{ width: '400px' }}>
                 <CardContent sx={{ textAlign: 'center' }}>
-                    <Typography variant='h3' sx={{ my: 3 }}>Quizo</Typography>
+                    <CardMedia
+                        component="img"
+                        height="200"
+                        image="https://i.ibb.co/sFGJFw7/quizo-logo.jpg"
+                        alt="quizo-logo"
+                    />
                     <Box sx={{
                         '& .MuiTextField-root': {
                             m: 1,
                             width: '90%'
                         }
                     }}>
-                        <form noValidate autoComplete='off' onSubmit={login}>
+                        <form noValidate autoComplete="off" onSubmit={login}>
                             <TextField
                                 label="Email"
                                 name="email"
                                 value={values.email}
                                 onChange={handleInputChange}
                                 variant="outlined"
-                                {...(errors.email && { error: true, helperText: errors.email })} 
-                                />
+                                {...(errors.email && { error: true, helperText: errors.email })}
+                            />
                             <TextField
                                 label="Name"
                                 name="name"
                                 value={values.name}
                                 onChange={handleInputChange}
                                 variant="outlined"
-                                {...(errors.name && { error: true, helperText: errors.name })} 
-                                />
+                                {...(errors.name && { error: true, helperText: errors.name })}
+                            />
                             <Button
                                 type="submit"
                                 variant="contained"
                                 size="large"
                                 sx={{
+                                    m: 1,
                                     width: '90%',
-                                    height: '50px'
+                                    height: '50px',
+                                    bgcolor: 'primary',
                                 }}>Start</Button>
                         </form>
                     </Box>
